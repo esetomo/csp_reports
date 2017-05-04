@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<title>CSP Reports</title>
+<h1>CSP Reports</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Document URI</th>
+      <th>Blocked URI</th>
+      <th>Violated Directive</th>
+      <th>Original Policy</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.document_uri %></td>
+        <td><%= report.blocked_uri %></td>
+        <td><%= report.violated_directive %></td>
+        <td><%= report.original_policy %></td>
+        <td><%= report.report_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

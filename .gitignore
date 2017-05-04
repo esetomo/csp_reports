@@ -2,3 +2,4 @@
 config/deploy/
 log/
 tmp/
+.env
