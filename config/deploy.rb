@@ -21,3 +21,15 @@ end
 
 after 'deploy:updating', 'bundler:install'
 after 'deploy:updating', 'deploy:db:migrate'
+
+namespace :deploy do
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  after :publishing, :restart
+end
+
+after 'deploy:publishing', 'deploy:restart'
